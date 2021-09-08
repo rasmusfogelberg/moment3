@@ -1,0 +1,1 @@
+console.log("This is a console log from the second JavaScript file!");

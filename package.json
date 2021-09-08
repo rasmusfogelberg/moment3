@@ -1,0 +1,19 @@
+{
+  "name": "moment2",
+  "version": "1.0.0",
+  "description": "Practice assignment for learning SASS and SCSS",
+  "main": "index.js",
+  "scripts": {
+    "gulp": "gulp"
+  },
+  "author": "Rasmus Fogelberg",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.27.5",
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssnano": "^2.1.3",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-terser": "^2.0.1"
+  }
+}

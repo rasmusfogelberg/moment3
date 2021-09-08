@@ -1,0 +1,1 @@
+console.log("This Console log is from the the third JS file");

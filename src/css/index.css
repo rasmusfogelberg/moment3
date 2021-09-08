@@ -1,0 +1,12 @@
+#index {
+    background-color: lightpink;
+}
+
+#index h1 {
+    font-size: 3rem;
+}
+
+#index p {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
