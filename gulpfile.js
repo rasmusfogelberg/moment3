@@ -4,13 +4,16 @@ const terser = require('gulp-terser');
 const cssnano = require('gulp-cssnano');
 const imagemin = require('gulp-imagemin');
 const browserSync = require('browser-sync').create();
+const sass = require('gulp-sass'); 
+sass.compiler = require('node-sass');
 
 // Search paths
 const files = {
     htmlPath: "src/**/*.html",
     cssPath: "src/css/*.css",
     jsPath: "src/js/*.js",
-    imagePath: "src/images/*"
+    imagePath: "src/images/*",
+    sassPath: "src/sass/*.sass"
 }
 
 // HTML-task, copy html files
@@ -43,6 +46,14 @@ function imageTask() {
     .pipe(dest('pub/images'));
 }
 
+function sassTask() {
+    return src(files.sassPath)
+        .pipe(sourcemaps.init())
+        .pipe(sass().on("error", sass.logError))
+        .pipe(dest("pub/css"))
+        .pipe(browserSync.stream());
+}
+
 // Watcher
 function watchTask() {
 
@@ -50,7 +61,7 @@ function watchTask() {
         server: "./pub"
     });
 
-    watch([files.htmlPath, files.jsPath, files.cssPath, files.imagePath], parallel(copyHTML, jsTask, cssTask, imageTask)).on('change', browserSync.reload);
+    watch([files.htmlPath, files.jsPath, files.cssPath, files.imagePath, files.sassPath], parallel(copyHTML, jsTask, cssTask, imageTask, sassTask)).on('change', browserSync.reload);
 }
 
 exports.default = series (
