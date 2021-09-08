@@ -27,7 +27,7 @@ function copyHTML() {
 function jsTask() {
     return src(files.jsPath)
     .pipe(sourcemaps.init())
-    .pipe(concat('main.js'))
+    .pipe(concat('script.js'))
     .pipe(terser())
     .pipe(sourcemaps.write('../maps'))
     .pipe(dest('pub/js'));
