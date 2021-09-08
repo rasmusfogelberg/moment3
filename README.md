@@ -8,7 +8,7 @@ This assignment aims to teach about SASS and SCSS while still using the automati
  - [ ] At least 2 images
  
  # SASS requirements
- The CSS for the website must be written in SASS. The following should be in the SCSS file(s):
+ The CSS for the website must be written in SASS/SCSS. The following should be in the SCSS file(s):
  - [ ] Variables
  - [ ] Nesting
  - [ ] Mixins
