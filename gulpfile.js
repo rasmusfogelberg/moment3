@@ -4,7 +4,8 @@ const terser = require('gulp-terser');
 const cssnano = require('gulp-cssnano');
 const imagemin = require('gulp-imagemin');
 const browserSync = require('browser-sync').create();
-const sass = require('gulp-sass'); 
+const sourcemaps = require('gulp-sourcemaps')
+const sass = require('gulp-sass')(require('node-sass')); 
 sass.compiler = require('node-sass');
 
 // Search paths
@@ -25,8 +26,10 @@ function copyHTML() {
 // JS-task, concat and minimize JS files
 function jsTask() {
     return src(files.jsPath)
+    .pipe(sourcemaps.init())
     .pipe(concat('main.js'))
     .pipe(terser())
+    .pipe(sourcemaps.write('../maps'))
     .pipe(dest('pub/js'));
 }
 
@@ -48,10 +51,11 @@ function imageTask() {
 
 function sassTask() {
     return src(files.sassPath)
-        .pipe(sourcemaps.init())
-        .pipe(sass().on("error", sass.logError))
-        .pipe(dest("pub/css"))
-        .pipe(browserSync.stream());
+    .pipe(sourcemaps.init())
+    .pipe(sass().on("error", sass.logError))
+    .pipe(sourcemaps.write('../maps'))
+    .pipe(dest('pub/css'))
+    .pipe(browserSync.stream());
 }
 
 // Watcher
@@ -65,6 +69,6 @@ function watchTask() {
 }
 
 exports.default = series (
-    parallel(copyHTML, jsTask, cssTask, imageTask),
+    parallel(copyHTML, jsTask, cssTask, imageTask, sassTask),
     watchTask
 );
