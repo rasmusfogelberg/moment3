@@ -1,0 +1,31 @@
+$themes: (
+  'default': #003fff,
+  'golden': goldenrod,
+  'light': lighten(#003fff, 20%),
+  'dark': darken(#003fff, 20%)
+);
+
+$default-text-color: rgba(255,255,255,.6);
+
+// Mixin that supports applying colors based off a predefined theme
+@mixin theme($name, $color) {
+  .#{$name} {
+    background: $color;
+    color: $default-text-color;
+  }
+}
+
+// Loop through $themes map
+@each $key, $value in $themes {
+  @include theme($key, $value);
+}
+
+@mixin link($withBorder) {
+  padding: 1rem 1.5rem;
+
+  @if $withBorder {
+    border: 3px solid #edeeee;
+  } @else {
+    border: none;
+  }
+}

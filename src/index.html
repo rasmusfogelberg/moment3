@@ -4,12 +4,36 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Rafo</title>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/main.css" rel="stylesheet" type="text/css" />
   </head>
-  <body class="dark">
-    <header>
-      <a href="#">F</a>
-      <a href="#">Contact me</a>
+  <body class="default">
+    <header class="header">
+      <nav class="navbar">
+        <a class="nav-logo" href="#">F</a>
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a class="nav-link" href="https://fogelcode.com">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Work</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About me</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact me</a>
+          </li>
+        </ul>
+        <!-- Burger menu holder, only visible on mobile -->
+        <div class="burgeru">
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+        </div>
+      </nav>
     </header>
     <main class="content">
       <div class="single">
@@ -28,7 +52,7 @@
               <p>And this is the longer one that provides a more detailed background to the project, what was used and how it was done etc.</p>
               <a href="#">View the project</a>
             </div>
-            <img src="https://images.unsplash.com/photo-1502945015378-0e284ca1a5be?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" />
+            <img src="images/image1.jpg" />
           </article>
           <article class="project">
             <div class="description">
@@ -37,7 +61,7 @@
               <p>And this is the longer one that provides a more detailed background to the project, what was used and how it was done etc.</p>
               <a href="#">View the project</a>
             </div>
-            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2252&q=80" />
+            <img src="images/image2.jpg" />
           </article>
         </section>
       </div>

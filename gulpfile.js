@@ -5,8 +5,8 @@ const cssnano = require('gulp-cssnano');
 const imagemin = require('gulp-imagemin');
 const browserSync = require('browser-sync').create();
 const sourcemaps = require('gulp-sourcemaps')
-const sass = require('gulp-sass')(require('node-sass')); 
-sass.compiler = require('node-sass');
+const sass = require('gulp-sass')(require('node-sass'));
+const { logError } = sass;
 
 // Search paths
 const files = {
@@ -14,7 +14,7 @@ const files = {
     cssPath: "src/css/*.css",
     jsPath: "src/js/*.js",
     imagePath: "src/images/*",
-    sassPath: "src/sass/*.sass"
+    sassPath: "src/sass/*.scss"
 }
 
 // HTML-task, copy html files
@@ -34,13 +34,13 @@ function jsTask() {
 }
 
 // CSS-task, concat and minimize CSS files
-function cssTask() { 
+/* function cssTask() { 
     return src(files.cssPath)
     .pipe(concat('style.css'))
     .pipe(cssnano())
     .pipe(dest('pub/css'))
     .pipe(browserSync.stream());
-}
+} */
 
 // image-task, minimize images
 function imageTask() { 
@@ -52,7 +52,7 @@ function imageTask() {
 function sassTask() {
     return src(files.sassPath)
     .pipe(sourcemaps.init())
-    .pipe(sass().on("error", sass.logError))
+    .pipe(sass().on("error", logError))
     .pipe(sourcemaps.write('../maps'))
     .pipe(dest('pub/css'))
     .pipe(browserSync.stream());
@@ -65,10 +65,10 @@ function watchTask() {
         server: "./pub"
     });
 
-    watch([files.htmlPath, files.jsPath, files.cssPath, files.imagePath, files.sassPath], parallel(copyHTML, jsTask, cssTask, imageTask, sassTask)).on('change', browserSync.reload);
+    watch([files.htmlPath, files.jsPath, files.imagePath, files.sassPath], parallel(copyHTML, jsTask, imageTask, sassTask)).on('change', browserSync.reload);
 }
 
 exports.default = series (
-    parallel(copyHTML, jsTask, cssTask, imageTask, sassTask),
+    parallel(copyHTML, jsTask, imageTask, sassTask),
     watchTask
 );

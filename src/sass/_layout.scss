@@ -1,0 +1,219 @@
+@import "base";
+
+*,
+*:after,
+*:before {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  width: 100%;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  text-size-adjust: 100%;
+  overflow-y: scroll;
+}
+
+body {
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-size: 1.8rem;
+}
+
+%heading-default {
+  font-size: 3.5rem;
+  color: rgba(255, 255, 255, 0.87);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+h1 {
+  @extend %heading-default;
+}
+
+h2 {
+  @extend %heading-default;
+  font-size: 2rem;
+}
+
+h3 {
+  @extend %heading-default;
+  font-size: 1.5rem;
+}
+
+h4 {
+  @extend %heading-default;
+  font-size: 1rem;
+}
+
+h5 {
+  @extend %heading-default;
+  font-size: 0.875rem;
+}
+
+h6 {
+  @extend %heading-default;
+  font-size: 0.75rem;
+}
+
+p {
+  font-size: 1.8rem;
+  font-weight: 200;
+  line-height: 150%;
+}
+
+strong {
+  font-weight: 700;
+}
+
+ul {
+  margin: 0;
+  font-size: 1.6rem;
+  padding: 0 0 0 2rem;
+}
+
+a {
+  color: rgba(255, 255, 255, 0.87);
+  text-decoration: none;
+  transition: 0.3s color;
+}
+
+a:hover {
+  color: #edeeee;
+}
+
+/* Layout */
+.content {
+  height: 100%;
+  margin-top: auto;
+}
+
+/** Single item **/
+.single {
+  margin: 0 auto;
+  max-width: 1335px;
+  position: relative;
+  width: 100%;
+  padding: 0 2rem;
+}
+
+/** Ingress **/
+.ingress {
+  margin-top: 12%;
+}
+
+.ingress h1 {
+  padding: 0;
+  text-transform: inherit;
+  line-height: 140%;
+  margin: 2rem 0;
+  max-width: 70%;
+  font-size: 5.5rem;
+}
+
+.ingress p {
+  padding: 0;
+  margin: 0;
+  line-height: 150%;
+  font-size: 2.5rem;
+  max-width: 80%;
+}
+
+.ingress strong {
+  font-size: 3.5rem;
+}
+
+.ingress a {
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/** Work **/
+.work {
+  margin-top: 12%;
+
+  h2 {
+    padding: 0;
+    margin: 0 0 4rem;
+    font-size: 2.4rem;
+  }
+
+  .project {
+    display: flex;
+    margin: 0 0 8rem;
+
+    .description {
+      padding-right: 8rem;
+
+      a {
+        @include link(true);
+        color: #edeeee;
+        display: inline-flex;
+        margin-top: 1.5rem;
+        padding: 1rem 1.5rem;
+
+        &:hover {
+          background-color: #edeeee;
+          color: #003fff;
+        }
+      }
+    }
+
+    img {
+      border-radius: 15px;
+    }
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .work .project img {
+    width: 600px;
+  }
+
+  .work .project .details {
+    padding-right: 8rem;
+  }
+}
+
+@media only screen and (max-width: 1240px) {
+  .work .project img {
+    height: 325px;
+    width: 400px;
+  }
+}
+
+@media only screen and (max-width: 930px) {
+  .work .project {
+    flex-direction: column-reverse;
+  }
+
+  .work .project .details {
+    padding: 0;
+  }
+
+  .work .project img {
+    margin-bottom: 4rem;
+    height: auto;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .ingress h1 {
+    max-width: 100%;
+  }
+  .ingress p {
+    max-width: 100%;
+  }
+}
