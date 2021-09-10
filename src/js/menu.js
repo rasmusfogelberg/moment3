@@ -2,9 +2,7 @@ const hamburger = document.querySelector(".burgeru");
 const navMenu = document.querySelector(".nav-menu");
 const link = document.querySelectorAll(".nav-link");
 const header = document.querySelector(".header");
-
 const sticky = header.offsetTop;
-console.log(sticky);
 
 window.onscroll = () => stickyHeader();
 
