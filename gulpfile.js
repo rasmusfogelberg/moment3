@@ -1,7 +1,6 @@
 const {src, dest, watch, series, parallel} = require('gulp');
 const concat = require('gulp-concat');
 const terser = require('gulp-terser');
-const cssnano = require('gulp-cssnano');
 const imagemin = require('gulp-imagemin');
 const browserSync = require('browser-sync').create();
 const sourcemaps = require('gulp-sourcemaps')
@@ -33,26 +32,20 @@ function jsTask() {
     .pipe(dest('pub/js'));
 }
 
-// CSS-task, concat and minimize CSS files
-/* function cssTask() { 
-    return src(files.cssPath)
-    .pipe(concat('style.css'))
-    .pipe(cssnano())
-    .pipe(dest('pub/css'))
-    .pipe(browserSync.stream());
-} */
-
-// image-task, minimize images
+// Image-task, minimize images
 function imageTask() { 
     return src(files.imagePath)
     .pipe(imagemin())
     .pipe(dest('pub/images'));
 }
 
+// Sass-task. Convert and compress scss code to css code.
 function sassTask() {
     return src(files.sassPath)
     .pipe(sourcemaps.init())
-    .pipe(sass().on("error", logError))
+    .pipe(sass({
+        outputStyle: 'compressed'
+    }).on("error", logError))
     .pipe(sourcemaps.write('../maps'))
     .pipe(dest('pub/css'))
     .pipe(browserSync.stream());
